@@ -1,5 +1,5 @@
-'use strict';
+"use strict";
 
 module.exports = {
-  name: 'ember-cli-number-abbr'
+  name: require("./package").name
 };
