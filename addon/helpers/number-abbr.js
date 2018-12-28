@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { helper as buildHelper } from '@ember/component/helper';
+import { A } from '@ember/array';
 
 function log10(x) {
   if (Math.log10) {
@@ -17,7 +18,7 @@ function getDecimalPlaces(adjustedNumber, maxSignificantPlaces) {
 export function numberAbbr([number = 0, delimiter = '.', maxSignificantPlaces = 3, padding = false, abbreviations = null], options) { // jshint ignore:line
   number = parseInt(number);
 
-  let symbols = abbreviations || Ember.A(['', 'K', 'M', 'B', 'T', 'Qua', 'Qui', 'Sex', 'Sep', 'Oct', 'Non', 'Dec']);
+  let symbols = abbreviations || A(['', 'K', 'M', 'B', 'T', 'Qua', 'Qui', 'Sex', 'Sep', 'Oct', 'Non', 'Dec']);
 
   let results = symbols.map( (symbol, index) => {
 
@@ -31,11 +32,11 @@ export function numberAbbr([number = 0, delimiter = '.', maxSignificantPlaces = 
     return strippedNumber + symbol;
   });
 
-  const result = Ember.A(results).find( (result, index) => {
+  const result = A(results).find( (result, index) => {
     return number.toString().length <= (index+1)*3;
   });
 
   return result;
 }
 
-export default Ember.Helper.helper(numberAbbr);
+export default buildHelper(numberAbbr);
