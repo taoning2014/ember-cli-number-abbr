@@ -80,15 +80,15 @@ You can provide your own list of abbreviations:
 
 To use this addon in your project, just type:
 
-```
-$ ember install ember-cli-number-abbr
+```bash
+ember install ember-cli-number-abbr
 ```
 
 or for older versions of ember-cli *(pre 1.4.0)*:
 
-```
-$ npm install --save-dev ember-cli-number-abbr
-$ ember generate ember-cli-number-abbr
+```bash
+npm install --save-dev ember-cli-number-abbr
+ember generate ember-cli-number-abbr
 ```
 
 ## Contributing
@@ -98,5 +98,4 @@ I am happy about any contributions or PRs. If you are missing some piece of func
 * `git clone https://github.com/lazybensch/ember-cli-number-abbr`
 * `cd ember-cli-number-abbr`
 * `npm install`
-* `bower install`
 * `ember test`
