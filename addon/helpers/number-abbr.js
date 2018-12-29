@@ -42,27 +42,29 @@ export function numberAbbr([
       "Dec"
     ]);
 
-  let results = symbols.map((symbol, index) => {
+  const getResult = (index) => {
     const adjustedNumber = number / Math.pow(10, index * 3);
 
     const decimalPlaces = getDecimalPlaces(
       adjustedNumber,
       maxSignificantPlaces
     );
+
     const roundedNumber = adjustedNumber.toFixed(decimalPlaces);
 
     let strippedNumber = padding
       ? roundedNumber
       : roundedNumber.replace(/(\.0+$)/, "");
-    strippedNumber = strippedNumber.replace(/\./, delimiter);
-    return strippedNumber + symbol;
-  });
 
-  const result = A(results).find((result, index) => {
+    strippedNumber = strippedNumber.replace(/\./, delimiter);
+    return strippedNumber + symbols[index];
+  };
+
+  const symbolIndex = A(symbols).findIndex((result, index) => {
     return number.toString().length <= (index + 1) * 3;
   });
 
-  return result;
+  return getResult(symbolIndex);
 }
 
 export default buildHelper(numberAbbr);
